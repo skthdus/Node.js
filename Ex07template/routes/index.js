@@ -10,4 +10,8 @@ router.get("/", (req, res) => {
   res.render("index", { title: "value" });
 });
 
+router.get("/hello", (req, res) => {
+  res.render("index", { title: "hello" });
+});
+
 module.exports = router;
