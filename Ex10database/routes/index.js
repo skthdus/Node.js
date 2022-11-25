@@ -39,4 +39,21 @@ router.post("/insert", (req, res) => {
   });
 });
 
+//특정회원 정보 조회
+router.get("/select/:id", (req, res) => {
+  let id = req.params.id;
+
+  let sql = "select * from member where id=?";
+
+  conn.query(sql, [id], function (err, rows, fields) {
+    console.log(rows);
+    console.log(fields);
+    if (err) {
+      console.error("select 실행 실패! " + err);
+    } else {
+      res.json({ listone: rows });
+    }
+  });
+});
+
 module.exports = router;
