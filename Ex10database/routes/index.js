@@ -56,4 +56,35 @@ router.get("/select/:id", (req, res) => {
   });
 });
 
+//회원삭제
+router.get("/delete/:id", (req, res) => {
+  let id = req.params.id;
+
+  let sql = "delete from member where id=?";
+
+  conn.query(sql, [id], function (err, rows, fields) {
+    if (err) {
+      console.error("delete 실행 실패! " + err);
+    } else {
+      res.redirect("/select");
+    }
+  });
+});
+
+//회원 정보 수정
+router.post("/update", (req, res) => {
+  let { id, pw, nick } = req.body;
+
+  let sql = "update member set pw=?, nick=? where id=?";
+  // ? 순서대로 넣어주기
+
+  conn.query(sql, [pw, nick, id], function (err, rows, fields) {
+    if (err) {
+      console.log("update 실행 실패! " + err);
+    } else {
+      res.redirect("/select");
+    }
+  });
+});
+
 module.exports = router;
