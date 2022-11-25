@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-class User extends Sequelize.Model {
+module.exports = class User extends Sequelize.Model {
   //init : user 필드 자료형 지정, 테이블 관련 설정
   //associate : 테이블 간의 관계 설정
 
@@ -38,4 +38,4 @@ class User extends Sequelize.Model {
     // db.Project.belongsTo(db.User, { foreignKey: "id", targetKey: "id" }); //1:1
     // db.Project.belongsToMany; // N:M
   }
-}
+};
